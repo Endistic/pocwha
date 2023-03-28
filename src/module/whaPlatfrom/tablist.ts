@@ -14,10 +14,10 @@ const tabsList: Tab[] = [
     id: '1',
     name: 'Events',
   },
-  {
-    id: '2',
-    name: 'Playback',
-  },
+  // {
+  //   id: '2',
+  //   name: 'Playback',
+  // },
   // {
   //   id: '5',
   //   name: 'Setting Camera',

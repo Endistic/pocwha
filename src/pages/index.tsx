@@ -13,17 +13,18 @@ const Index: FunctionComponent = () => {
         <h1
           className={clsx(
             "flex",
-            " mb-5",
+            "mb-5",
             "flex-row",
             "justify-center",
             "items-center",
-            "bg-emerald-700",
+            "bg-sky-600",
             "rounded-b-md",
             "w-auto",
             "h-20",
             "text-red-50",
             "text-4xl",
-            "m-2"
+            "m-2",
+            'font-bold'
           )}
         >
           Monitering Dashboard

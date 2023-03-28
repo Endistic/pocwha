@@ -164,11 +164,11 @@ const EventTab: FunctionComponent = (props) => {
   const { date, setDate } = query;
   return (
     <Event>
-      <Header
+      {/* <Header
         date={date}
         handleChangeDate={(date) => date != null && setDate(date)}
         totalEvents={mediaJSON.categories[0].videos.length}
-      />
+      /> */}
       <div className="cardBox">
         {mediaJSON.categories[0].videos.map((event) => (
           <Card key={event.id} event_detail={event} />

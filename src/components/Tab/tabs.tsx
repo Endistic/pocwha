@@ -25,11 +25,11 @@ const Tabs: FunctionComponent<TabProps> = (props) => {
       className={clsx(
         "flex",
         "gap-7",
-        "w-full",
         "border-b",
         "border-solid",
         "border-gray-01",
-        "m-4"
+        "m-4",
+        // "bg-red-500"
         
       )}
     >

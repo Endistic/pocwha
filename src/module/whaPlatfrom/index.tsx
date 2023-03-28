@@ -29,16 +29,16 @@ const WHA: FunctionComponent = () => {
     [dispatch]
   );
   return (
-    <Whapagestyle>
+    <div>
       <p className={clsx("text-2xl", "font-bold", "m-4")}>
         Security Camera Monitering
       </p>
       <Tabs activeTab={activeTab} list={_tabsList} />
       <Suspense fallback={<></>}>{activeTab === "1" && <EventTab />}</Suspense>
-      <Suspense fallback={<></>}>
+      {/* <Suspense fallback={<></>}>
         {activeTab === "2" && <PlaybackTab />}
-      </Suspense>
-    </Whapagestyle>
+      </Suspense> */}
+    </div>
   );
 };
 export default WHA;
