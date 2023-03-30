@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import ReactPlayer from "react-player";
 import Image from "@/components/Image/Image";
+import Link from "next/link";
 // import Image from "next/image";
 // import ImageURL from "@/components/common/Image";
 // import { EventSnapShot } from "@/types/snapshot";
@@ -73,33 +74,16 @@ const Card: FunctionComponent<CardProps> = (props) => {
               "bg-opacity-50",
               "px-2",
               "text-sub2",
-              "font-semibold",
-
-              "capitalize"
+              "font-semibold"
+              // "capitalize"
             )}
           >
             {event_detail.description ?? "Empty"}
+            <div className={(clsx('mt-3', "text-green-800"))}>
+            <Link href={event_detail.sources ?? ""} target="_blank">Watch Video !</Link>
+            </div>
+            
           </span>
-          {/* {tagsList.map(({ bgClass, name, textClass, tag }, i) => (
-            tags.includes(tag) ? (
-              <span
-                key={i}
-                className={clsx(
-                  'rounded-default',
-                  'bg-opacity-50',
-                  'px-2',
-                  'text-sub2',
-                  'font-semibold',
-                  bgClass,
-                  textClass,
-                  'capitalize',
-                )}>
-                {name}
-              </span>
-            ) : (
-              null
-            )
-          ))} */}
         </div>
       </div>
       <Image {...imageProps} src={"https://picsum.photos/200/300"} alt="" />
