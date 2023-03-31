@@ -25,7 +25,7 @@ const EventTab: FunctionComponent = (props) => {
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
 
-  const { data, error, isLoading } = useSWR(address, fetcher);
+  const { data, error, isLoading } = useSWR(address3, fetcher);
 
   console.log("data", data, typeof data);
 
