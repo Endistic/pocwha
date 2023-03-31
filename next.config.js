@@ -3,9 +3,10 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  images:{
-    domains: ['13.214.54.19'],
-  }
-}
+  images: {
+    // domains: ['13.214.54.19'],
+    domains: ["cdn2.thecatapi.com"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

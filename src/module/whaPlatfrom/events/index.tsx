@@ -20,7 +20,7 @@ import axios from "axios";
 // const fetcher = async (url: string) => axios.get(url).then((res) => res.data);
 const EventTab: FunctionComponent = (props) => {
   const address = `http://13.214.54.19:5000/events`;
- const address2 = `https://api.thecatapi.com/v1/images/search`;
+  const address2 = `https://api.thecatapi.com/v1/images/search?limit=10`;
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
 
@@ -44,14 +44,15 @@ const EventTab: FunctionComponent = (props) => {
   return (
     <Event>
       <div className="cardBox">
-        <pre>{JSON.stringify(data,null,1)}</pre>
-        {/* {data &&
-          data.data.map((item: any) => (
+        <pre>{JSON.stringify(data, null, 1)}</pre>
+
+        {data &&
+          data.map((item: any) => (
             // <p key={item.event_id}>{item.event_name}</p>
-            <div key={item.event_id}>
+            <div key={item.id}>
               <Card key={item.id} event_detail={item} />
             </div>
-          ))} */}
+          ))}
       </div>
     </Event>
   );
