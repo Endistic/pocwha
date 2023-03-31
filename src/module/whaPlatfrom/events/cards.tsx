@@ -61,17 +61,17 @@ const Card: FunctionComponent<CardProps> = (props) => {
       <div className={clsx("flex", "flex-col", "py-6", "gap-5")}>
         <div className={clsx("flex", "gap-5")}>
           <span className={clsx("text-sub1", "font-semibold", "text-gray-06")}>
-            {/* Date : {event_detail.timestamp.split("T")[0] ?? "-"} */}
+            Date : {event_detail.timestamp.split("T")[0] ?? "-"}
           </span>
           <span className={clsx("text-body1", "text-gray-06")}>
-            {/* Timestamp {event_detail.timestamp.split("T")[1] ?? "-"} */}
+            Timestamp {event_detail.timestamp.split("T")[1] ?? "-"}
           </span>
         </div>
         <div className={clsx("flex", "flex-row", "justify-between")}>
           <span className={clsx("text-sub1", "text-gray-04", "font-semibold")}>
             Time Start Detection
           </span>
-          {/* <p>{event_detail.video_ftime ?? "-"} second</p> */}
+          <p>{event_detail.video_ftime ?? "-"} second</p>
         </div>
 
         <div className={clsx("tags", "flex", "gap-2", "justify-between")}>
@@ -88,7 +88,7 @@ const Card: FunctionComponent<CardProps> = (props) => {
               "capitalize"
             )}
           >
-            {/* {event_detail.event_name.replace("_", " ") ?? "-"} */}
+            {event_detail.event_name.replace("_", " ") ?? "-"}
           </span>
         </div>
 
