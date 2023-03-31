@@ -21,13 +21,13 @@ import axios from "axios";
 const EventTab: FunctionComponent = (props) => {
   const address = `http://13.214.54.19:5000/events`;
   //const address2 = `https://api.thecatapi.com/v1/images/search?limit=10`;
-  const address3 = `https://ac7e-13-214-54-19.ap.ngrok.io/events`;
+  const address3 = `https://ac7e-13-214-54-19.ap.ngrok.io/`;
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
 
-  const { data, error, isLoading } = useSWR(address3, fetcher);
+  const { data, error, isLoading } = useSWR(address, fetcher);
 
-  console.log("data", data, typeof data);
+ 
 
   const query = useEventSnapshot({
     deviceName: "Test",
@@ -36,6 +36,7 @@ const EventTab: FunctionComponent = (props) => {
   const { date, setDate } = query;
 
   if (error) {
+    console.log("data", error.message, typeof data);
     return <p>{error.message}</p>;
   }
   if (!data) {
