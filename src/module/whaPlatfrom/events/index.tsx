@@ -22,6 +22,7 @@ const EventTab: FunctionComponent = (props) => {
   const address = `http://13.214.54.19:5000/events`;
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
+    
   const { data, error, isLoading } = useSWR(address, fetcher);
 
   console.log("data", data, typeof data);
