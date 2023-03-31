@@ -172,7 +172,7 @@ const EventTab: FunctionComponent = (props) => {
   const { date, setDate } = query;
 
   if (error) {
-    return <p>{error.status}</p>;
+    return <p>{error.message}</p>;
   }
   if (!data) {
     return <p>Loading...</p>;
