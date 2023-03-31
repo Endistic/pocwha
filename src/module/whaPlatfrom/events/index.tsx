@@ -1,11 +1,30 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Key, useEffect, useState } from "react";
 import { Event } from "./styled";
 import Card from "./cards";
 import { useEventSnapshot } from "@/query/event-snapshot-report";
 import Header from "./header";
+import useSWR from "swr";
+import axios from "axios";
+// type DataImport = {
+//   timestamp: string;
+//   video: string;
+//   image_link: string;
+//   event_id: number;
+//   event_name: string;
+//   video_ftime: number;
+// };
+// type Props = {
+//   data: any;
+// };
 
+// const fetcher = async (url: string) => axios.get(url).then((res) => res.data);
 const EventTab: FunctionComponent = (props) => {
+  const address = `http://13.214.54.19:5000/events`;
+  const fetcher = async (url: string) =>
+    await axios.get(url).then((res) => res.data);
+  const { data, error, isLoading } = useSWR(address, fetcher);
 
+  console.log("data", data, typeof data);
   var mediaJSON = {
     categories: [
       {
@@ -142,17 +161,6 @@ const EventTab: FunctionComponent = (props) => {
             thumb: "images/WeAreGoingOnBullrun.jpg",
             title: "We Are Going On Bullrun",
           },
-          // {
-          //   id: 13,
-          //   description:
-          //     "The Smoking Tire meets up with Chris and Jorge from CarsForAGrand.com to see just how far $1,000 can go when looking for a car.The Smoking Tire meets up with Chris and Jorge from CarsForAGrand.com to see just how far $1,000 can go when looking for a car.",
-          //   sources:
-          //     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
-
-          //   subtitle: "By Garage419",
-          //   thumb: "images/WhatCarCanYouGetForAGrand.jpg",
-          //   title: "What care can you get for a grand?",
-          // },
         ],
       },
     ],
@@ -162,17 +170,26 @@ const EventTab: FunctionComponent = (props) => {
   });
 
   const { date, setDate } = query;
+
+  if (error) {
+    return <p>{error.message}</p>;
+  }
+  if (!data) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <Event>
-      {/* <Header
-        date={date}
-        handleChangeDate={(date) => date != null && setDate(date)}
-        totalEvents={mediaJSON.categories[0].videos.length}
-      /> */}
       <div className="cardBox">
-        {mediaJSON.categories[0].videos.map((event) => (
-          <Card key={event.id} event_detail={event} />
-        ))}
+        {/* <pre>{JSON.stringify(data,null,1)}</pre> */}
+        {data &&
+          data.data.map((item: any) => (
+            // <p key={item.event_id}>{item.event_name}</p>
+            <div key={item.event_id}>
+              <Card key={item.id} event_detail={item} />
+            </div>
+          ))}
+        
       </div>
     </Event>
   );

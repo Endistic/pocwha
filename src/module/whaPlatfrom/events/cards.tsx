@@ -1,8 +1,9 @@
 import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import ReactPlayer from "react-player";
-import Image from "@/components/Image/Image";
+
 import Link from "next/link";
+import Image from "next/image";
 // import Image from "next/image";
 // import ImageURL from "@/components/common/Image";
 // import { EventSnapShot } from "@/types/snapshot";
@@ -37,6 +38,11 @@ const Card: FunctionComponent<CardProps> = (props) => {
     }),
     [event_detail.id]
   );
+
+  // function onOpenViedo(src: string) {
+  //   <Link target="_blank" href={src} rel="noreferrer"></Link>;
+  // }
+
   return (
     <div
       className={clsx(
@@ -52,51 +58,66 @@ const Card: FunctionComponent<CardProps> = (props) => {
         "m-4"
       )}
     >
-      <div className={clsx("flex", "flex-col", "py-6", "gap-8")}>
+      <div className={clsx("flex", "flex-col", "py-6", "gap-5")}>
         <div className={clsx("flex", "gap-5")}>
           <span className={clsx("text-sub1", "font-semibold", "text-gray-06")}>
-            Date
-            {/* {event.date} */}
+            Date : {event_detail.timestamp.split("T")[0] ?? "-"}
           </span>
           <span className={clsx("text-body1", "text-gray-06")}>
-            Time Start - Time End
-            {/* {`${event.timeStart}${event.timeEnd ? `- ${event.timeEnd}` : ''}`} */}
+            Timestamp {event_detail.timestamp.split("T")[1] ?? "-"}
           </span>
         </div>
-        <span className={clsx("text-sub1", "text-gray-04", "font-semibold")}>
-          Minutes
-          {/* {`${event.duration} Minutes`} */}
-        </span>
-        <div className={clsx("tags", "flex", "gap-2")}>
+        <div className={clsx("flex", "flex-row", "justify-between")}>
+          <span className={clsx("text-sub1", "text-gray-04", "font-semibold")}>
+            Time Start Detection
+          </span>
+          <p>{event_detail.video_ftime ?? "-"} second</p>
+        </div>
+
+        <div className={clsx("tags", "flex", "gap-2", "justify-between")}>
+          <span className={clsx("text-sub1", "text-gray-04", "font-semibold")}>
+            Event
+          </span>
           <span
             className={clsx(
               "rounded-default",
               "bg-opacity-50",
               "px-2",
               "text-sub2",
-              "font-semibold"
-              // "capitalize"
+              "font-semibold",
+              "capitalize"
             )}
           >
-            {event_detail.description ?? "Empty"}
-            <div className={(clsx('mt-3', "text-green-800"))}>
-            <Link href={event_detail.sources ?? ""} target="_blank">Watch Video !</Link>
-            </div>
-            
+            {event_detail.event_name.replace("_", " ") ?? "-"}
           </span>
         </div>
+
+        <Link
+          href={event_detail.video_link ?? ""}
+          target="_blank"
+          className={clsx(
+            "bg-blue-400",
+            "text-center",
+            "border",
+            "rounded-lg",
+            "inline-block",
+            "cursor-pointer",
+            "hover:bg-white"
+          )}
+        >
+          Watch Playback Video
+        </Link>
       </div>
-      <Image {...imageProps} src={"https://picsum.photos/200/300"} alt="" />
-      {/* {event.thumbnail ? (
-        <ImageURL
+      <div>
+        <Image src={event_detail.image_link} width={500} height={180} alt="" />
+        {/* <Image
           {...imageProps}
-          src={event.thumbnail} />
-      ) : (
-        // eslint-disable-next-line jsx-a11y/alt-text
-        <Image
-          {...imageProps}
-          src={PlaceholderIcon} />
-      )} */}
+          src={
+            'http://13.214.54.19/images/jam_jam_test1.mp4_180_f1e4f038-4b15-4dd9-ac5d-921486be93ff.png'
+          }
+          alt=""
+        /> */}
+      </div>
     </div>
   );
   // return (

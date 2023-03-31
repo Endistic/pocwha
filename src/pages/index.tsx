@@ -3,10 +3,15 @@ import MainLayout from "@/layout";
 import { Header, MainLayoutStyled } from "@/layout/styled";
 import WHA from "@/module/whaPlatfrom";
 import clsx from "clsx";
+import { GetServerSideProps, GetStaticProps } from "next/types";
 
-import { FunctionComponent } from "react";
+import { FunctionComponent, use, useEffect, useState } from "react";
 
-const Index: FunctionComponent = () => {
+// type Props = {
+//   posts: Post[];
+// };
+const Index = () => {
+  
   return (
     <MainLayoutStyled>
       <MainLayout>
@@ -24,7 +29,7 @@ const Index: FunctionComponent = () => {
             "text-red-50",
             "text-4xl",
             "m-2",
-            'font-bold'
+            "font-bold"
           )}
         >
           Monitering Dashboard
@@ -35,5 +40,6 @@ const Index: FunctionComponent = () => {
     </MainLayoutStyled>
   );
 };
+
 
 export default Index;
