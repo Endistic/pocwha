@@ -92,7 +92,7 @@ const Card: FunctionComponent<CardProps> = (props) => {
           </span>
         </div>
 
-        {/* <Link
+        <Link
           href={event_detail.video_link ?? ""}
           target="_blank"
           className={clsx(
@@ -106,15 +106,10 @@ const Card: FunctionComponent<CardProps> = (props) => {
           )}
         >
           Watch Playback Video
-        </Link> */}
+        </Link>
       </div>
       <div>
-        <Image
-          src={event_detail.url}
-          width={event_detail.width}
-          height={event_detail.height}
-          alt=""
-        />
+        <Image src={event_detail.image_link} width={500} height={180} alt="" />
         {/* <Image
           {...imageProps}
           src={

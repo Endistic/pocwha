@@ -4,8 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    // domains: ['13.214.54.19'],
-    domains: ["cdn2.thecatapi.com"],
+    domains: ['13.214.54.19'],
+    // domains: ["https://ac7e-13-214-54-19.ap.ngrok.io"],
   },
 };
 

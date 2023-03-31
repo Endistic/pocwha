@@ -20,11 +20,12 @@ import axios from "axios";
 // const fetcher = async (url: string) => axios.get(url).then((res) => res.data);
 const EventTab: FunctionComponent = (props) => {
   const address = `http://13.214.54.19:5000/events`;
-  const address2 = `https://api.thecatapi.com/v1/images/search?limit=10`;
+  //const address2 = `https://api.thecatapi.com/v1/images/search?limit=10`;
+  const address3 = `https://ac7e-13-214-54-19.ap.ngrok.io/events`;
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
 
-  const { data, error, isLoading } = useSWR(address2, fetcher);
+  const { data, error, isLoading } = useSWR(address, fetcher);
 
   console.log("data", data, typeof data);
 
@@ -44,10 +45,10 @@ const EventTab: FunctionComponent = (props) => {
   return (
     <Event>
       <div className="cardBox">
-        <pre>{JSON.stringify(data, null, 1)}</pre>
+        {/* <pre>{JSON.stringify(data, null, 1)}</pre> */}
 
         {data &&
-          data.map((item: any) => (
+          data.data.map((item: any) => (
             // <p key={item.event_id}>{item.event_name}</p>
             <div key={item.id}>
               <Card key={item.id} event_detail={item} />
