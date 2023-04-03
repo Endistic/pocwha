@@ -21,7 +21,7 @@ import axios from "axios";
 const EventTab: FunctionComponent = (props) => {
   const address = `http://13.214.54.19:5000/events`;
   //const address2 = `https://api.thecatapi.com/v1/images/search?limit=10`;
-  const address3 = `https://5e65-13-214-54-19.ap.ngrok.io/events`;
+  const address3 = `https://4451-13-214-54-19.ap.ngrok.io/events`;
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
 
